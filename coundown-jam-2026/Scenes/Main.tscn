@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://b68re1mio21kt"]
+
+[ext_resource type="Script" uid="uid://b0epmhe01wk0y" path="res://Scripts/main.gd" id="1_idj7w"]
+[ext_resource type="PackedScene" uid="uid://3fwv73sdfth0" path="res://Scenes/Dice.tscn" id="1_r150o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ostoq"]
+size = Vector3(1, 0.5029297, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_loq3h"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ajtct"]
+
+[sub_resource type="Sky" id="Sky_idj7w"]
+
+[sub_resource type="Environment" id="Environment_ostoq"]
+background_mode = 1
+background_color = Color(0.18188232, 0.3275261, 0.7620447, 1)
+sky = SubResource("Sky_idj7w")
+ambient_light_color = Color(0.7283931, 0.62410665, 0.24561602, 1)
+reflected_light_source = 2
+
+[node name="Main" type="Node3D" unique_id=1471205464]
+script = ExtResource("1_idj7w")
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=659729774]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=873196337]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, -0.259, 0)
+shape = SubResource("BoxShape3D_ostoq")
+
+[node name="Wall" type="StaticBody3D" parent="." unique_id=2013259036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.420368, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_loq3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall" unique_id=2000486421]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 30, 3, 1, 0)
+shape = SubResource("BoxShape3D_ajtct")
+
+[node name="Wall2" type="StaticBody3D" parent="." unique_id=1439038482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.369448, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_loq3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2" unique_id=930586260]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 30, 3, 1, 0)
+shape = SubResource("BoxShape3D_ajtct")
+
+[node name="Wall3" type="StaticBody3D" parent="." unique_id=336180989]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.041296005, 0, -18.41223)
+physics_material_override = SubResource("PhysicsMaterial_loq3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3" unique_id=433248410]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 30, 3, 1, 0)
+shape = SubResource("BoxShape3D_ajtct")
+
+[node name="Wall4" type="StaticBody3D" parent="." unique_id=1407809525]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.041296005, 0, 12.527042)
+physics_material_override = SubResource("PhysicsMaterial_loq3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4" unique_id=561890367]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 30, 3, 1, 0)
+shape = SubResource("BoxShape3D_ajtct")
+
+[node name="Dice" parent="." unique_id=1305762879 instance=ExtResource("1_r150o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0217514, 0)
+
+[node name="Control" type="Control" parent="." unique_id=1735384289]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1148.0
+offset_bottom = 650.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1987802510]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 129.0
+offset_bottom = 56.0
+text = "Dice result"
+
+[node name="ResultLabel" type="Label" parent="Control" unique_id=483185060]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 24.0
+offset_right = 352.0
+offset_bottom = 59.0
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=447080471]
+transform = Transform3D(1, 0, 0, 0, 0.017851314, 0.9998407, 0, -0.9998407, 0.017851314, 0, 19.540787, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1674791150]
+environment = SubResource("Environment_ostoq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=257823423]
+transform = Transform3D(1, 0, 0, 0, 0.0012090958, 0.9999993, 0, -0.9999993, 0.0012090958, 0, 21.670023, 0)
+spot_range = 44.597256
+spot_angle = 60.28272
+
+[connection signal="roll_finished" from="Dice" to="." method="_on_dice_roll_finished"]

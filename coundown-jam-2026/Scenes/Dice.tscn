@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://3fwv73sdfth0"]
+
+[ext_resource type="Script" uid="uid://dppda2iaad7xa" path="res://Scripts/dice.gd" id="1_dcpc8"]
+[ext_resource type="PackedScene" uid="uid://uldr3muvpno5" path="res://Graphics/dice1.glb" id="2_jn3s8"]
+[ext_resource type="Script" uid="uid://b62k6abntnmjl" path="res://Scripts/DiceFaceValue.gd" id="3_jn3s8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ostoq"]
+
+[node name="Dice" type="RigidBody3D" unique_id=1305762879]
+gravity_scale = 2.0
+freeze = true
+script = ExtResource("1_dcpc8")
+
+[node name="dice1" parent="." unique_id=1455160247 instance=ExtResource("2_jn3s8")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1865208123]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_ostoq")
+
+[node name="ChildFaces" type="Node3D" parent="." unique_id=873908868]
+
+[node name="Child(1)" type="Node3D" parent="ChildFaces" unique_id=675445820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("3_jn3s8")
+integerValue = 1
+effectValue = "OneMighty"
+
+[node name="Child(2)" type="Node3D" parent="ChildFaces" unique_id=496974589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+script = ExtResource("3_jn3s8")
+integerValue = 2
+effectValue = "TwoSmall"
+
+[node name="Child(3)" type="Node3D" parent="ChildFaces" unique_id=1755644532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+script = ExtResource("3_jn3s8")
+integerValue = 3
+effectValue = "ThreeSwords"
+
+[node name="Child(4)" type="Node3D" parent="ChildFaces" unique_id=1934269724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("3_jn3s8")
+integerValue = 4
+effectValue = "ForSure"
+
+[node name="Child(5)" type="Node3D" parent="ChildFaces" unique_id=1838299637]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+script = ExtResource("3_jn3s8")
+integerValue = 5
+effectValue = "FiveGold"
+
+[node name="Child(6)" type="Node3D" parent="ChildFaces" unique_id=1845630004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_jn3s8")
+integerValue = 6
+effectValue = "SixLives"
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]
