@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ctc2yyc3pqm2p"]
+
+[ext_resource type="Script" uid="uid://daltmho8j3txl" path="res://Scripts/player_holder.gd" id="1_5j1lf"]
+[ext_resource type="Script" uid="uid://d0x24n163gi01" path="res://Scripts/dice_spawner.gd" id="2_lvcx2"]
+[ext_resource type="PackedScene" uid="uid://3fwv73sdfth0" path="res://Scenes/Dice.tscn" id="3_lvcx2"]
+
+[node name="PlayerHolder" type="Node" unique_id=1661349083]
+script = ExtResource("1_5j1lf")
+
+[node name="DiceSpawner" type="Node3D" parent="." unique_id=1124139008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+script = ExtResource("2_lvcx2")
+scene_to_instantiate = ExtResource("3_lvcx2")

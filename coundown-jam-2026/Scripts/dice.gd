@@ -1,33 +1,23 @@
 extends RigidBody3D
 
 @onready var diceChildren = $ChildFaces.get_children()
-
+@export var diceFaceSelected:Node3D;
 var dice_start_pos;
 var throw_strengt = 30;
-@export var diceFaceSelected:Node3D;
 
 var is_rolling: bool = false
-
 signal roll_finished(value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	throw_strengt = randf_range(60,180)
 	dice_start_pos = global_position;
+	_rollDice(); #we roll the dice in ready because we will instantiate them
 	pass # Replace with function body.
-	
-func _input(event):
-	if event.is_action_pressed("ui_accept") && !is_rolling:
-		print("Roll Dice")
-		_rollDice();
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
 func _rollDice():
 	#resetState
+	print("Roll Dice")
 	is_rolling = true;
 	diceFaceSelected = null;
 	sleeping = false
