@@ -1,12 +1,10 @@
 extends Node3D
 
-var playerHolder: Node;
-var resultLabel:Label;
+@export var playerHolder: Node;
+@export var resultLabel:Label;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	playerHolder = $PlayerHolder
-	resultLabel = $Control/ResultLabel
 	pass # Replace with function body.
 
 

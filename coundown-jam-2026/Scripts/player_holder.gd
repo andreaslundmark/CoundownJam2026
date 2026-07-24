@@ -18,7 +18,6 @@ var diceSpawner: Node3D;
 
 func _ready() -> void:
 	diceSpawner = $DiceSpawner
-	diceToThrowLabel = $"../Control/DiceToThrowLabel"
 	diceToThrowLabel.text = str(dicesToThrow)
 	dicesLeftLabel.text = str(diceAmount);
 	pass

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfdwdidnmk5ms"
-path.s3tc="res://.godot/imported/TempBackground.jpg-ea97c1bf6070f9bc2830c91698e84482.s3tc.ctex"
+uid="uid://dnmshgfsd4vhe"
+path.s3tc="res://.godot/imported/TempBackgroundWithoutText.jpg-bc830dfabef616b1605d397ed7b8615c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Graphics/TempBackground.jpg"
-dest_files=["res://.godot/imported/TempBackground.jpg-ea97c1bf6070f9bc2830c91698e84482.s3tc.ctex"]
+source_file="res://Graphics/TempBackgroundWithoutText.jpg"
+dest_files=["res://.godot/imported/TempBackgroundWithoutText.jpg-bc830dfabef616b1605d397ed7b8615c.s3tc.ctex"]
 
 [params]
 
