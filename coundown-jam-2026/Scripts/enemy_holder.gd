@@ -7,8 +7,11 @@ extends Node
 @export var enemyEffect3:RichTextLabel;
 @export var enemyEffect4:RichTextLabel;
 @export var enemyHealthAmount:Label;
+@export var enemyThrowAmount:Label;
 
 @export var enemyHealth: int = 30;
+@export var maxThrowsAllowed = 7;
+@export var currentThrowsAllowed = 7;
 
 var goldReward:int = 100;
 
@@ -21,9 +24,17 @@ func _process(delta: float) -> void:
 	pass
 
 func _decreaseEnemyHealth(value: int):
-	enemyHealth -= value;
+	if (enemyHealth - value) > 0:
+		enemyHealth -= value;
+	else:
+		enemyHealth = 0;
+		_enemyDead()
 	enemyHealthAmount.text = str(enemyHealth)
 	
-	
 func _enemyDead():
+	print("Enemy is dead!")
 	pass
+
+func _decreaseThrowAmount():
+	currentThrowsAllowed -= 1;
+	enemyThrowAmount.text = str(currentThrowsAllowed)

@@ -27,9 +27,8 @@ sky = SubResource("Sky_idj7w")
 ambient_light_color = Color(0.7283931, 0.62410665, 0.24561602, 1)
 reflected_light_source = 2
 
-[node name="FightingScene" type="Node3D" unique_id=293250360 node_paths=PackedStringArray("playerHolder", "enemyHolder", "resultLabel", "dicesLeftLabel", "diceToThrowLabel", "increaseButton", "decreaseButton", "throwButton")]
+[node name="FightingScene" type="Node3D" unique_id=293250360 node_paths=PackedStringArray("enemyHolder", "resultLabel", "dicesLeftLabel", "diceToThrowLabel", "increaseButton", "decreaseButton", "throwButton")]
 script = ExtResource("1_1ws7k")
-playerHolder = NodePath("")
 enemyHolder = NodePath("EnemyHolder")
 resultLabel = NodePath("Control/PlayerUI/ResultAmount")
 dicesLeftLabel = NodePath("Control/PlayerUI/DicesLeftAmount")
@@ -316,6 +315,22 @@ offset_right = 415.0
 offset_bottom = 1009.0
 text = "42"
 
+[node name="EnemyThrowLabel" type="Label" parent="Control/EnemyElements" unique_id=1508404831]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 986.0
+offset_right = 463.0
+offset_bottom = 1009.0
+text = "Throws Left"
+
+[node name="EnemyThrowAmount" type="Label" parent="Control/EnemyElements" unique_id=1834995708]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 986.0
+offset_right = 571.0
+offset_bottom = 1009.0
+text = "7"
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1459958143]
 transform = Transform3D(1, 0, 0, 0, 0.017851314, 0.9998407, 0, -0.9998407, 0.017851314, 0, 19.540787, 0)
 
@@ -328,7 +343,7 @@ light_energy = 12.112
 spot_range = 44.597256
 spot_angle = 60.28272
 
-[node name="EnemyHolder" parent="." unique_id=2144663764 node_paths=PackedStringArray("enemyName", "enemyFlavourText", "enemyEffect1", "enemyEffect2", "enemyEffect3", "enemyEffect4", "enemyHealthAmount") instance=ExtResource("3_kro36")]
+[node name="EnemyHolder" parent="." unique_id=2144663764 node_paths=PackedStringArray("enemyName", "enemyFlavourText", "enemyEffect1", "enemyEffect2", "enemyEffect3", "enemyEffect4", "enemyHealthAmount", "enemyThrowAmount") instance=ExtResource("3_kro36")]
 enemyName = NodePath("../Control/EnemyElements/Name")
 enemyFlavourText = NodePath("../Control/EnemyElements/FlavourText")
 enemyEffect1 = NodePath("../Control/EnemyElements/Effects")
@@ -336,6 +351,7 @@ enemyEffect2 = NodePath("../Control/EnemyElements/Effects2")
 enemyEffect3 = NodePath("../Control/EnemyElements/Effects3")
 enemyEffect4 = NodePath("../Control/EnemyElements/Effects4")
 enemyHealthAmount = NodePath("../Control/EnemyElements/EnemyHealthAmount")
+enemyThrowAmount = NodePath("../Control/EnemyElements/EnemyThrowAmount")
 
 [connection signal="pressed" from="Control/PlayerUI/Increase" to="." method="_on_increase_pressed"]
 [connection signal="pressed" from="Control/PlayerUI/Decrease" to="." method="_on_decrease_pressed"]

@@ -73,6 +73,7 @@ func _throwDices():
 		fighting_scene._resetThrowResult()
 		dice_throw_result = 0
 		diceThrown = true;
+		fighting_scene.enemyHolder._decreaseThrowAmount()
 		for i in range(dicesToThrow):
 			var new_scene = diceSpawner.scene_to_instantiate.instantiate()
 			add_child(new_scene)

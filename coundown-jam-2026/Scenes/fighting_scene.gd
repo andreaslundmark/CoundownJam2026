@@ -26,6 +26,12 @@ func _on_dice_roll_finished(value: Variant) -> void:
 func _reportThrowResult(value: int):
 	resultLabel.text = str(value)
 	enemyHolder._decreaseEnemyHealth(value)
+	if !_check_fight_status(): # if player do not have any dices,the enemy have no hp and the player have no throws left to throw
+		print("End Fight!")
+		if enemyHolder.enemyHealth > 0 && enemyHolder.currentThrowsAllowed > 0:
+			print("Player Win!")
+		else:
+			print("Enemy win!")
 	pass
 
 func _resetThrowResult():
@@ -33,7 +39,8 @@ func _resetThrowResult():
 	pass
 
 func _on_throw_pressed() -> void:
-	playerHolder._throwDices()
+	if _check_fight_status(): # if player have any dices,the enemy have hp and the player still ahve throws left to throw
+		playerHolder._throwDices()
 	pass # Replace with function body.
 
 
@@ -45,3 +52,9 @@ func _on_decrease_pressed() -> void:
 func _on_increase_pressed() -> void:
 	playerHolder._IncreaseDiceThrowAmount()
 	pass # Replace with function body.
+
+
+func _check_fight_status() -> bool:
+	if  playerHolder.diceAmount > 0 && enemyHolder.enemyHealth > 0 && enemyHolder.currentThrowsAllowed > 0: 
+		return true
+	return false
