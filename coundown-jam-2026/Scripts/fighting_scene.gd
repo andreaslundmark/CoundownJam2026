@@ -28,7 +28,7 @@ func _reportThrowResult(value: int):
 	enemyHolder._decreaseEnemyHealth(value)
 	if !_check_fight_status(): # if player do not have any dices,the enemy have no hp and the player have no throws left to throw
 		print("End Fight!")
-		if enemyHolder.enemyHealth > 0 && enemyHolder.currentThrowsAllowed > 0:
+		if enemyHolder.enemyHealth <= 0 && enemyHolder.currentThrowsAllowed > 0:
 			print("Player Win!")
 		else:
 			print("Enemy win!")

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://calqjokoi44h5"]
+
+[ext_resource type="Script" uid="uid://crscgu1fk65tu" path="res://Scripts/loading_screen.gd" id="1_kddo8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajtct"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_xoop3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m6rkq"]
+resource_name = "Transition"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjj4j"]
+_data = {
+&"RESET": SubResource("Animation_xoop3"),
+&"Transition": SubResource("Animation_m6rkq")
+}
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=1675494354 node_paths=PackedStringArray("animation_player")]
+layer = 10
+script = ExtResource("1_kddo8")
+animation_player = NodePath("TransitionAnimation")
+
+[node name="Panel" type="Panel" parent="." unique_id=53776371]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ajtct")
+
+[node name="TransitionAnimation" type="AnimationPlayer" parent="." unique_id=728004056]
+libraries/ = SubResource("AnimationLibrary_qjj4j")
+autoplay = &"Transition"

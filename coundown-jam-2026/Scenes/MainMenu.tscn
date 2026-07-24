@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://vk587e8ah278"]
+
+[ext_resource type="Script" uid="uid://1dmuvbgdh0hd" path="res://Scripts/main_menu.gd" id="1_853f1"]
+[ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tt5f1"]
+
+[node name="MainMenu" type="Control" unique_id=341634203]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_853f1")
+initial_scene = &"uid://b68re1mio21kt"
+
+[node name="TempBackgroundWithoutText" type="Sprite2D" parent="." unique_id=1177991906]
+position = Vector2(1402.6321, 536)
+scale = Vector2(3.9330654, 1.083)
+texture = ExtResource("1_tt5f1")
+flip_h = true
+
+[node name="MenuButtonsMiddle" type="Control" parent="." unique_id=1215564094]
+layout_mode = 1
+anchor_left = 0.261
+anchor_right = 0.70600003
+anchor_bottom = 1.005
+offset_left = -0.120025635
+offset_right = 0.47998047
+offset_bottom = -0.4000244
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuButtonsMiddle" unique_id=1142968855]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -154.0
+offset_right = 125.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start game" type="Button" parent="MenuButtonsMiddle/VBoxContainer" unique_id=320198312]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Game"
+
+[node name="Options" type="Button" parent="MenuButtonsMiddle/VBoxContainer" unique_id=1338354926]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options"
+
+[node name="Exit Game" type="Button" parent="MenuButtonsMiddle/VBoxContainer" unique_id=1084738005]
+custom_minimum_size = Vector2(350, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit Game"
+
+[connection signal="pressed" from="MenuButtonsMiddle/VBoxContainer/Start game" to="." method="_on_start_game_pressed"]

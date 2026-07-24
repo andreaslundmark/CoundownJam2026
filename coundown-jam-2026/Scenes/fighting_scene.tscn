@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ed705w8svysy"]
 
-[ext_resource type="Script" uid="uid://bq0clq3m1qgjx" path="res://Scenes/fighting_scene.gd" id="1_1ws7k"]
+[ext_resource type="Script" uid="uid://bq0clq3m1qgjx" path="res://Scripts/fighting_scene.gd" id="1_1ws7k"]
 [ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tx861"]
 [ext_resource type="PackedScene" uid="uid://csgysvsgo3152" path="res://Scenes/EnemyHolder.tscn" id="3_kro36"]
 
