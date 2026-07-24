@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bq0clq3m1qgjx" path="res://Scenes/fighting_scene.gd" id="1_1ws7k"]
 [ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tx861"]
-[ext_resource type="PackedScene" uid="uid://ctc2yyc3pqm2p" path="res://Scenes/player_holder.tscn" id="2_1ws7k"]
 [ext_resource type="PackedScene" uid="uid://csgysvsgo3152" path="res://Scenes/EnemyHolder.tscn" id="3_kro36"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ajtct"]
@@ -28,11 +27,16 @@ sky = SubResource("Sky_idj7w")
 ambient_light_color = Color(0.7283931, 0.62410665, 0.24561602, 1)
 reflected_light_source = 2
 
-[node name="FightingScene" type="Node3D" unique_id=293250360 node_paths=PackedStringArray("playerHolder", "enemyHolder", "resultLabel")]
+[node name="FightingScene" type="Node3D" unique_id=293250360 node_paths=PackedStringArray("playerHolder", "enemyHolder", "resultLabel", "dicesLeftLabel", "diceToThrowLabel", "increaseButton", "decreaseButton", "throwButton")]
 script = ExtResource("1_1ws7k")
-playerHolder = NodePath("PlayerHolder")
+playerHolder = NodePath("")
 enemyHolder = NodePath("EnemyHolder")
 resultLabel = NodePath("Control/PlayerUI/ResultAmount")
+dicesLeftLabel = NodePath("Control/PlayerUI/DicesLeftAmount")
+diceToThrowLabel = NodePath("Control/PlayerUI/DiceToThrowAmount")
+increaseButton = NodePath("Control/PlayerUI/Increase")
+decreaseButton = NodePath("Control/PlayerUI/Decrease")
+throwButton = NodePath("Control/PlayerUI/Throw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1817981142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27946854, 0, 0)
@@ -96,9 +100,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PlayerUI" type="Control" parent="Control" unique_id=908049745]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchor_right = 0.165
+anchor_bottom = 1.0
+offset_right = 3.1999817
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DiceResultLabel" type="Label" parent="Control/PlayerUI" unique_id=979886120]
 layout_mode = 0
@@ -320,14 +327,6 @@ transform = Transform3D(1, 0, 0, 0, 0.0012090958, 0.9999993, 0, -0.9999993, 0.00
 light_energy = 12.112
 spot_range = 44.597256
 spot_angle = 60.28272
-
-[node name="PlayerHolder" parent="." unique_id=1661349083 node_paths=PackedStringArray("dicesLeftLabel", "diceToThrowLabel", "increaseButton", "decreaseButton", "throwButton", "fighting_scene") instance=ExtResource("2_1ws7k")]
-dicesLeftLabel = NodePath("../Control/PlayerUI/DicesLeftAmount")
-diceToThrowLabel = NodePath("../Control/PlayerUI/DiceToThrowAmount")
-increaseButton = NodePath("../Control/PlayerUI/Increase")
-decreaseButton = NodePath("../Control/PlayerUI/Decrease")
-throwButton = NodePath("../Control/PlayerUI/Throw")
-fighting_scene = NodePath("..")
 
 [node name="EnemyHolder" parent="." unique_id=2144663764 node_paths=PackedStringArray("enemyName", "enemyFlavourText", "enemyEffect1", "enemyEffect2", "enemyEffect3", "enemyEffect4", "enemyHealthAmount") instance=ExtResource("3_kro36")]
 enemyName = NodePath("../Control/EnemyElements/Name")

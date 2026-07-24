@@ -1,13 +1,13 @@
 extends Node
 
-@export var diceAmount: int = 10;
-@export var dicesLeftLabel: Label;
-@export var diceToThrowLabel: Label;
-@export var dicesToThrow = 3;
+var diceAmount: int = 10;
+var dicesLeftLabel: Label;
+var diceToThrowLabel: Label;
+var dicesToThrow = 3;
 var max_amount_to_throw = 5;
-@export var increaseButton: Button;
-@export var decreaseButton: Button;
-@export var throwButton: Button;
+var increaseButton: Button;
+var decreaseButton: Button;
+var throwButton: Button;
 
 var dice_throw_result:int = 0;
 var dice_throw_result_reported: bool = false;
@@ -20,6 +20,11 @@ var playerGold = 100;
 
 func _ready() -> void:
 	diceSpawner = $DiceSpawner
+	dicesLeftLabel = fighting_scene.dicesLeftLabel
+	diceToThrowLabel = fighting_scene.diceToThrowLabel
+	increaseButton = fighting_scene.increaseButton
+	decreaseButton = fighting_scene.decreaseButton
+	decreaseButton = fighting_scene.decreaseButton
 	diceToThrowLabel.text = str(dicesToThrow)
 	dicesLeftLabel.text = str(diceAmount);
 	pass

@@ -4,6 +4,13 @@ extends Node3D
 @export var enemyHolder: Node;
 @export var resultLabel:Label;
 
+@export var dicesLeftLabel: Label;
+@export var diceToThrowLabel: Label;
+
+@export var increaseButton: Button;
+@export var decreaseButton: Button;
+@export var throwButton: Button;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

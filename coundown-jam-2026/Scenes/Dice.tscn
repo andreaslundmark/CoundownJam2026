@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3fwv73sdfth0"]
 
 [ext_resource type="Script" uid="uid://dppda2iaad7xa" path="res://Scripts/dice.gd" id="1_dcpc8"]
-[ext_resource type="PackedScene" uid="uid://uldr3muvpno5" path="res://Graphics/dice1.glb" id="2_jn3s8"]
+[ext_resource type="PackedScene" uid="uid://ci46n75q3elqe" path="res://Graphics/dice1.fbx" id="2_jn3s8"]
 [ext_resource type="Script" uid="uid://b62k6abntnmjl" path="res://Scripts/DiceFaceValue.gd" id="3_jn3s8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ostoq"]
@@ -11,7 +11,7 @@ gravity_scale = 2.0
 freeze = true
 script = ExtResource("1_dcpc8")
 
-[node name="dice1" parent="." unique_id=1455160247 instance=ExtResource("2_jn3s8")]
+[node name="dice2" parent="." unique_id=2112417052 instance=ExtResource("2_jn3s8")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1865208123]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

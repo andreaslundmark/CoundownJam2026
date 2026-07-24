@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b0epmhe01wk0y" path="res://Scripts/main.gd" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://ed705w8svysy" path="res://Scenes/fighting_scene.tscn" id="2_idj7w"]
+[ext_resource type="PackedScene" uid="uid://ctc2yyc3pqm2p" path="res://Scenes/player_holder.tscn" id="2_kln2b"]
 
-[node name="Main" type="Node3D" unique_id=1471205464 node_paths=PackedStringArray("playerHolder", "enemyHolder", "resultLabel")]
+[node name="Main" type="Node3D" unique_id=1471205464]
 script = ExtResource("1_idj7w")
-playerHolder = NodePath("")
-enemyHolder = NodePath("")
-resultLabel = NodePath("")
 
-[node name="FightingScene" parent="." unique_id=293250360 instance=ExtResource("2_idj7w")]
+[node name="PlayerHolder" parent="." unique_id=1661349083 node_paths=PackedStringArray("fighting_scene") instance=ExtResource("2_kln2b")]
+fighting_scene = NodePath("../FightingScene")
+
+[node name="FightingScene" parent="." unique_id=293250360 node_paths=PackedStringArray("playerHolder") instance=ExtResource("2_idj7w")]
+playerHolder = NodePath("../PlayerHolder")
