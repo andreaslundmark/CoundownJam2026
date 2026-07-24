@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://csgysvsgo3152"]
+
+[ext_resource type="Script" uid="uid://c3f6tdvodl5wh" path="res://Scripts/enemy_holder.gd" id="1_hocx1"]
+
+[node name="EnemyHolder" type="Node" unique_id=2144663764]
+script = ExtResource("1_hocx1")

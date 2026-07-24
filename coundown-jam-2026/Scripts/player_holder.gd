@@ -14,7 +14,9 @@ var dice_throw_result_reported: bool = false;
 
 var diceThrown: bool = false;
 var diceSpawner: Node3D;
-@export var main: Node3D;
+@export var fighting_scene: Node3D;
+
+var playerGold = 100;
 
 func _ready() -> void:
 	diceSpawner = $DiceSpawner
@@ -35,7 +37,7 @@ func _process(delta: float) -> void:
 		for i in range(diceSpawner.instnciatedDiceArray.size()):
 			dice_throw_result += diceSpawner.instnciatedDiceArray[i].diceFaceSelected.integerValue
 		if !dice_throw_result_reported:
-			main._reportThrowResult(dice_throw_result)
+			fighting_scene._reportThrowResult(dice_throw_result)
 			dice_throw_result_reported = true
 	pass
 
@@ -63,7 +65,7 @@ func _throwDices():
 	if diceAmount > 0 && !diceThrown:
 		dice_throw_result_reported = false
 		_clearInstanciatedDices()
-		main._resetThrowResult()
+		fighting_scene._resetThrowResult()
 		dice_throw_result = 0
 		diceThrown = true;
 		for i in range(dicesToThrow):

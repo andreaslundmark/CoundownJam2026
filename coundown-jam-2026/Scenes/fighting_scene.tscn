@@ -1,0 +1,343 @@
+[gd_scene format=3 uid="uid://ed705w8svysy"]
+
+[ext_resource type="Script" uid="uid://bq0clq3m1qgjx" path="res://Scenes/fighting_scene.gd" id="1_1ws7k"]
+[ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tx861"]
+[ext_resource type="PackedScene" uid="uid://ctc2yyc3pqm2p" path="res://Scenes/player_holder.tscn" id="2_1ws7k"]
+[ext_resource type="PackedScene" uid="uid://csgysvsgo3152" path="res://Scenes/EnemyHolder.tscn" id="3_kro36"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ajtct"]
+size = Vector2(30, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loq3h"]
+albedo_texture = ExtResource("1_tx861")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ostoq"]
+size = Vector3(1.1161499, 3.6791992, 1.1379395)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_loq3h"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ajtct"]
+size = Vector3(6.8652344, 1, 1)
+
+[sub_resource type="Sky" id="Sky_idj7w"]
+
+[sub_resource type="Environment" id="Environment_ostoq"]
+background_mode = 1
+sky = SubResource("Sky_idj7w")
+ambient_light_color = Color(0.7283931, 0.62410665, 0.24561602, 1)
+reflected_light_source = 2
+
+[node name="FightingScene" type="Node3D" unique_id=293250360 node_paths=PackedStringArray("playerHolder", "enemyHolder", "resultLabel")]
+script = ExtResource("1_1ws7k")
+playerHolder = NodePath("PlayerHolder")
+enemyHolder = NodePath("EnemyHolder")
+resultLabel = NodePath("Control/PlayerUI/ResultAmount")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1817981142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27946854, 0, 0)
+mesh = SubResource("PlaneMesh_ajtct")
+surface_material_override/0 = SubResource("StandardMaterial3D_loq3h")
+
+[node name="DiceFort" type="Node3D" parent="." unique_id=599608337]
+
+[node name="Floor" type="StaticBody3D" parent="DiceFort" unique_id=845722423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5920086, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiceFort/Floor" unique_id=851883949]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0, -0.259, 0)
+shape = SubResource("BoxShape3D_ostoq")
+
+[node name="Roof" type="StaticBody3D" parent="DiceFort" unique_id=350397200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiceFort/Roof" unique_id=988004967]
+transform = Transform3D(30, 0, 0, 0, 1, 0, 0, 0, 30, 0.04119873, 1.3291359, 0.52368164)
+shape = SubResource("BoxShape3D_ostoq")
+
+[node name="Wall" type="StaticBody3D" parent="DiceFort" unique_id=1219885771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.73135, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_loq3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiceFort/Wall" unique_id=974122065]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 30, 3, 1, 0)
+shape = SubResource("BoxShape3D_ajtct")
+
+[node name="Wall2" type="StaticBody3D" parent="DiceFort" unique_id=1580345740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.855894, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_loq3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiceFort/Wall2" unique_id=2124101802]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 30, 0.06738281, 1, 0)
+shape = SubResource("BoxShape3D_ajtct")
+
+[node name="Wall3" type="StaticBody3D" parent="DiceFort" unique_id=412107350]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.041296005, 0, -18.41223)
+physics_material_override = SubResource("PhysicsMaterial_loq3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiceFort/Wall3" unique_id=2046417444]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 30, 3, 1, 0)
+shape = SubResource("BoxShape3D_ajtct")
+
+[node name="Wall4" type="StaticBody3D" parent="DiceFort" unique_id=1972057800]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.041296005, 0, 12.527042)
+physics_material_override = SubResource("PhysicsMaterial_loq3h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiceFort/Wall4" unique_id=636375091]
+transform = Transform3D(1, 0, 0, 0, 30, 0, 0, 0, 30, 3, 1, 0)
+shape = SubResource("BoxShape3D_ajtct")
+
+[node name="Control" type="Control" parent="." unique_id=1350762989]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerUI" type="Control" parent="Control" unique_id=908049745]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DiceResultLabel" type="Label" parent="Control/PlayerUI" unique_id=979886120]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 129.0
+offset_bottom = 56.0
+text = "Dice result"
+
+[node name="DiceToThrowLabel" type="Label" parent="Control/PlayerUI" unique_id=645354926]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 198.0
+offset_right = 147.0
+offset_bottom = 224.0
+text = "Dice to throw"
+
+[node name="DiceToThrowAmount" type="Label" parent="Control/PlayerUI" unique_id=94035219]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 232.0
+offset_right = 85.0
+offset_bottom = 255.0
+scale = Vector2(2.5643322, 1.5285896)
+
+[node name="DiceLeftLabel" type="Label" parent="Control/PlayerUI" unique_id=1766418657]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 93.0
+offset_right = 136.0
+offset_bottom = 119.0
+text = "Dices Left"
+
+[node name="DicesLeftAmount" type="Label" parent="Control/PlayerUI" unique_id=155598799]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 91.0
+offset_right = 182.0
+offset_bottom = 114.0
+scale = Vector2(2.48, 1.5179489)
+
+[node name="ResultAmount" type="Label" parent="Control/PlayerUI" unique_id=376640303]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 24.0
+offset_right = 352.0
+offset_bottom = 59.0
+
+[node name="Increase" type="Button" parent="Control/PlayerUI" unique_id=702453257]
+layout_mode = 0
+offset_left = 40.000046
+offset_top = 152.00002
+offset_right = 114.000046
+offset_bottom = 183.00002
+scale = Vector2(1.3186998, 1.3523715)
+text = "Increase
+"
+
+[node name="Decrease" type="Button" parent="Control/PlayerUI" unique_id=386430526]
+layout_mode = 0
+offset_left = 43.00003
+offset_top = 281.0
+offset_right = 123.00003
+offset_bottom = 312.0
+scale = Vector2(1.3186998, 1.3523715)
+text = "Decrease
+
+"
+
+[node name="Throw" type="Button" parent="Control/PlayerUI" unique_id=1112505147]
+layout_mode = 0
+offset_left = 45.000023
+offset_top = 336.0
+offset_right = 125.00002
+offset_bottom = 367.0
+scale = Vector2(1.3186998, 1.3523715)
+text = "Throw
+
+"
+
+[node name="FightDoneLabel" type="Label" parent="Control/PlayerUI" unique_id=1690290647]
+visible = false
+layout_mode = 0
+offset_left = 342.0
+offset_top = 314.0
+offset_right = 491.0
+offset_bottom = 363.0
+scale = Vector2(3.0195308, 2.1985717)
+text = "No dices left 
+the fight is done"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="EnemyElements" type="Control" parent="Control" unique_id=503199739]
+layout_mode = 1
+anchor_left = 0.69900006
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.080078
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="RichTextLabel" parent="Control/EnemyElements" unique_id=911707215]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.034843206
+anchor_bottom = 0.06153846
+offset_left = 179.23706
+offset_top = 27.0
+offset_right = 477.8434
+offset_bottom = 124.53846
+grow_horizontal = 0
+grow_vertical = 2
+text = "The Saint Of Rot"
+scroll_active = false
+
+[node name="FlavourText" type="RichTextLabel" parent="Control/EnemyElements" unique_id=1337199574]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.034843206
+anchor_bottom = 0.06153846
+offset_left = 179.23706
+offset_top = 81.0
+offset_right = 477.8434
+offset_bottom = 278.53845
+grow_horizontal = 0
+grow_vertical = 2
+text = "He does not ask for prayers. He does not seek salvation or offers it. His smile is a grin full of things that squirm. He speaks of decay like a lover, offering pieces of himself in trade for pieces of youself"
+scroll_active = false
+
+[node name="Effects" type="RichTextLabel" parent="Control/EnemyElements" unique_id=756381361]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.034843206
+anchor_bottom = 0.06153846
+offset_left = 179.23706
+offset_top = 254.0
+offset_right = 477.84378
+offset_bottom = 337.53845
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 0.114876606
+text = "Stumble into a plauge pit
+Dice result 10-15. Maggots of plauge reaches you lungs.You have to remove one more dice next throw."
+scroll_active = false
+
+[node name="Effects2" type="RichTextLabel" parent="Control/EnemyElements" unique_id=608157982]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.034843206
+anchor_bottom = 0.06153846
+offset_left = 171.0
+offset_top = 437.0
+offset_right = 469.60672
+offset_bottom = 520.53845
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -0.04368577
+text = "Hope And Despair
+Dice result 6. Hope of getting rid of the rotten maggots increases with each second. Add 5 dices to you dice amount. Dice result 1 you lose half you dices."
+scroll_active = false
+
+[node name="Effects3" type="RichTextLabel" parent="Control/EnemyElements" unique_id=235100753]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.034843206
+anchor_bottom = 0.06153846
+offset_left = 173.0
+offset_top = 589.00006
+offset_right = 471.60672
+offset_bottom = 672.5385
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 0.042733766
+text = "Power is not required here
+Dices thrown 4-5. Overpowering rot and decay rarely work, the overuse of force result in you getting more sick. Deal half amount of damage rolled."
+scroll_active = false
+
+[node name="Effects4" type="RichTextLabel" parent="Control/EnemyElements" unique_id=1738568659]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.034843206
+anchor_bottom = 0.06153846
+offset_left = 174.0
+offset_top = 746.0
+offset_right = 472.60672
+offset_bottom = 829.53845
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -0.07576032
+text = "Undiscovered but not unaffected
+Dices thrown 1. Gain 3 dices if the dice result is lower than 3."
+scroll_active = false
+
+[node name="EnemyHealthLabel" type="Label" parent="Control/EnemyElements" unique_id=1791564520]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 986.0
+offset_right = 287.0
+offset_bottom = 1009.0
+text = "Enemy Health"
+
+[node name="EnemyHealthAmount" type="Label" parent="Control/EnemyElements" unique_id=1151737722]
+layout_mode = 0
+offset_left = 307.0
+offset_top = 986.0
+offset_right = 415.0
+offset_bottom = 1009.0
+text = "42"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1459958143]
+transform = Transform3D(1, 0, 0, 0, 0.017851314, 0.9998407, 0, -0.9998407, 0.017851314, 0, 19.540787, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=911063240]
+environment = SubResource("Environment_ostoq")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1653743251]
+transform = Transform3D(1, 0, 0, 0, 0.0012090958, 0.9999993, 0, -0.9999993, 0.0012090958, 0, 21.670023, 0)
+light_energy = 12.112
+spot_range = 44.597256
+spot_angle = 60.28272
+
+[node name="PlayerHolder" parent="." unique_id=1661349083 node_paths=PackedStringArray("dicesLeftLabel", "diceToThrowLabel", "increaseButton", "decreaseButton", "throwButton", "fighting_scene") instance=ExtResource("2_1ws7k")]
+dicesLeftLabel = NodePath("../Control/PlayerUI/DicesLeftAmount")
+diceToThrowLabel = NodePath("../Control/PlayerUI/DiceToThrowAmount")
+increaseButton = NodePath("../Control/PlayerUI/Increase")
+decreaseButton = NodePath("../Control/PlayerUI/Decrease")
+throwButton = NodePath("../Control/PlayerUI/Throw")
+fighting_scene = NodePath("..")
+
+[node name="EnemyHolder" parent="." unique_id=2144663764 node_paths=PackedStringArray("enemyName", "enemyFlavourText", "enemyEffect1", "enemyEffect2", "enemyEffect3", "enemyEffect4", "enemyHealthAmount") instance=ExtResource("3_kro36")]
+enemyName = NodePath("../Control/EnemyElements/Name")
+enemyFlavourText = NodePath("../Control/EnemyElements/FlavourText")
+enemyEffect1 = NodePath("../Control/EnemyElements/Effects")
+enemyEffect2 = NodePath("../Control/EnemyElements/Effects2")
+enemyEffect3 = NodePath("../Control/EnemyElements/Effects3")
+enemyEffect4 = NodePath("../Control/EnemyElements/Effects4")
+enemyHealthAmount = NodePath("../Control/EnemyElements/EnemyHealthAmount")
+
+[connection signal="pressed" from="Control/PlayerUI/Increase" to="." method="_on_increase_pressed"]
+[connection signal="pressed" from="Control/PlayerUI/Decrease" to="." method="_on_decrease_pressed"]
+[connection signal="pressed" from="Control/PlayerUI/Throw" to="." method="_on_throw_pressed"]
