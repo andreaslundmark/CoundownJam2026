@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1dmuvbgdh0hd" path="res://Scripts/main_menu.gd" id="1_853f1"]
 [ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tt5f1"]
+[ext_resource type="AudioStream" uid="uid://yevi4oi5o7x" path="res://Sounds/MenuDrone.wav" id="3_8saeu"]
 
 [node name="MainMenu" type="Control" unique_id=341634203]
 layout_mode = 3
@@ -59,5 +60,10 @@ custom_minimum_size = Vector2(350, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Exit Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=319376971]
+stream = ExtResource("3_8saeu")
+volume_db = -16.0
+autoplay = true
 
 [connection signal="pressed" from="MenuButtonsMiddle/VBoxContainer/Start game" to="." method="_on_start_game_pressed"]

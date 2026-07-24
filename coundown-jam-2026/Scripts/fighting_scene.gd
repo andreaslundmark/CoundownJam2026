@@ -30,8 +30,11 @@ func _reportThrowResult(value: int):
 		print("End Fight!")
 		if enemyHolder.enemyHealth <= 0 && enemyHolder.currentThrowsAllowed > 0:
 			print("Player Win!")
+			GameManager.postFightWinner ="Player Wins!"
 		else:
 			print("Enemy win!")
+			GameManager.postFightWinner ="Enemy Wins!"
+		SceneLoader.load_scene("uid://ctp2lhorcs1lu")
 	pass
 
 func _resetThrowResult():
