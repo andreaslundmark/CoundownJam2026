@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 func _rollDice():
 	#resetState
-	print("Roll Dice")
+	#print("Roll Dice")
 	is_rolling = true;
 	diceFaceSelected = null;
 	sleeping = false
