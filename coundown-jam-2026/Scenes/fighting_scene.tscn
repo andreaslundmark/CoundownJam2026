@@ -301,34 +301,34 @@ scroll_active = false
 
 [node name="EnemyHealthLabel" type="Label" parent="Control/EnemyElements" unique_id=1791564520]
 layout_mode = 0
-offset_left = 179.0
-offset_top = 986.0
-offset_right = 287.0
-offset_bottom = 1009.0
+offset_left = 214.0
+offset_top = 955.0
+offset_right = 322.0
+offset_bottom = 978.0
 text = "Enemy Health"
 
 [node name="EnemyHealthAmount" type="Label" parent="Control/EnemyElements" unique_id=1151737722]
 layout_mode = 0
-offset_left = 307.0
-offset_top = 986.0
-offset_right = 415.0
-offset_bottom = 1009.0
+offset_left = 342.0
+offset_top = 955.0
+offset_right = 450.0
+offset_bottom = 978.0
 text = "42"
 
 [node name="EnemyThrowLabel" type="Label" parent="Control/EnemyElements" unique_id=1508404831]
 layout_mode = 0
-offset_left = 355.0
-offset_top = 986.0
-offset_right = 463.0
-offset_bottom = 1009.0
+offset_left = -1298.0
+offset_top = 62.0
+offset_right = -1190.0
+offset_bottom = 85.0
 text = "Throws Left"
 
 [node name="EnemyThrowAmount" type="Label" parent="Control/EnemyElements" unique_id=1834995708]
 layout_mode = 0
-offset_left = 463.0
-offset_top = 986.0
-offset_right = 571.0
-offset_bottom = 1009.0
+offset_left = -1190.0
+offset_top = 62.0
+offset_right = -1082.0
+offset_bottom = 85.0
 text = "7"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1459958143]

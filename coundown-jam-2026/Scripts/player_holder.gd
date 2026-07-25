@@ -46,11 +46,11 @@ func _process(delta: float) -> void:
 			dice_throw_result_reported = true
 	pass
 
-func _DecreaseDiceAmount(value: int = 1):
+func _DecreaseDiceAmount(value: int = 1) -> void:
 	diceAmount -= value;
 	dicesLeftLabel.text = str(diceAmount);
 	
-func _IncreaseDiceThrowAmount():
+func _IncreaseDiceThrowAmount() -> void:
 	if dicesToThrow < diceAmount && dicesToThrow < max_amount_to_throw:
 		dicesToThrow += 1;
 	else:
@@ -58,7 +58,7 @@ func _IncreaseDiceThrowAmount():
 		pass
 	diceToThrowLabel.text = str(dicesToThrow)
 	
-func _DecreaseDiceThrowAmount():
+func _DecreaseDiceThrowAmount() -> void:
 	if dicesToThrow > 1:
 		dicesToThrow -= 1;
 	else:
@@ -66,7 +66,7 @@ func _DecreaseDiceThrowAmount():
 		pass
 	diceToThrowLabel.text = str(dicesToThrow)
 
-func _throwDices():
+func _throwDices() -> void:
 	if diceAmount > 0 && !diceThrown:
 		dice_throw_result_reported = false
 		_clearInstanciatedDices()
@@ -84,7 +84,7 @@ func _throwDices():
 			dicesToThrow = diceAmount
 	pass
 
-func _clearInstanciatedDices():
+func _clearInstanciatedDices() -> void:
 	for i in range(diceSpawner.instnciatedDiceArray.size()):
 		diceSpawner.instnciatedDiceArray[i]. queue_free()
 		

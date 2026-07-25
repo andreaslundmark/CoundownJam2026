@@ -15,9 +15,9 @@ func _ready() -> void:
 	_rollDice(); #we roll the dice in ready because we will instantiate them
 	pass # Replace with function body.
 	
-func _rollDice():
+func _rollDice() -> void:
 	#resetState
-	print("Roll Dice")
+	#print("Roll Dice")
 	is_rolling = true;
 	diceFaceSelected = null;
 	sleeping = false

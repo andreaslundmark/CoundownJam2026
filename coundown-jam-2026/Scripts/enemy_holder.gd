@@ -23,7 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _decreaseEnemyHealth(value: int):
+func _decreaseEnemyHealth(value: int) -> void:
 	if (enemyHealth - value) > 0:
 		enemyHealth -= value;
 	else:
@@ -31,10 +31,10 @@ func _decreaseEnemyHealth(value: int):
 		_enemyDead()
 	enemyHealthAmount.text = str(enemyHealth)
 	
-func _enemyDead():
+func _enemyDead() -> void:
 	print("Enemy is dead!")
 	pass
 
-func _decreaseThrowAmount():
+func _decreaseThrowAmount() -> void:
 	currentThrowsAllowed -= 1;
 	enemyThrowAmount.text = str(currentThrowsAllowed)

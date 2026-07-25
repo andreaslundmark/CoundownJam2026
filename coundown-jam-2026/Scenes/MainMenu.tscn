@@ -67,3 +67,4 @@ volume_db = -16.0
 autoplay = true
 
 [connection signal="pressed" from="MenuButtonsMiddle/VBoxContainer/Start game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="MenuButtonsMiddle/VBoxContainer/Exit Game" to="." method="_on_exit_game_pressed"]

@@ -23,7 +23,7 @@ func _on_dice_roll_finished(value: Variant) -> void:
 	resultLabel.text = str(value)
 	pass # Replace with function body.
 
-func _reportThrowResult(value: int):
+func _reportThrowResult(value: int) -> void:
 	resultLabel.text = str(value)
 	enemyHolder._decreaseEnemyHealth(value)
 	if !_check_fight_status(): # if player do not have any dices,the enemy have no hp and the player have no throws left to throw
@@ -31,13 +31,19 @@ func _reportThrowResult(value: int):
 		if enemyHolder.enemyHealth <= 0 && enemyHolder.currentThrowsAllowed > 0:
 			print("Player Win!")
 			GameManager.postFightWinner ="Player Wins!"
+			SaveLoadManager.save_data.playerGold += 50
+			SaveLoadManager._saveGame()
+			print(SaveLoadManager.save_data.playerGold)
 		else:
 			print("Enemy win!")
 			GameManager.postFightWinner ="Enemy Wins!"
+			SaveLoadManager.save_data.playerGold -= 10
+			SaveLoadManager._saveGame()
+			print(SaveLoadManager.save_data.playerGold)
 		SceneLoader.load_scene("uid://ctp2lhorcs1lu")
 	pass
 
-func _resetThrowResult():
+func _resetThrowResult() -> void:
 	resultLabel.text = str("")
 	pass
 
