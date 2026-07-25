@@ -47,6 +47,12 @@ func _process(delta: float) -> void:
 			fightingSceneNode._reportThrowResult(diceThrowResult)
 			diceThrowResultReported = true
 	pass
+	
+func _IncreaseDiceAmount(value: int = 1) -> void:
+		SaveLoadManager.save_data.diceAmount = (diceAmount+1)
+		SaveLoadManager._saveGame()
+		diceAmount = SaveLoadManager.save_data.diceAmount
+		dicesLeftLabel.text = str(diceAmount);
 
 func _DecreaseDiceAmount(value: int = 1) -> void:
 		SaveLoadManager.save_data.diceAmount = (diceAmount-1)

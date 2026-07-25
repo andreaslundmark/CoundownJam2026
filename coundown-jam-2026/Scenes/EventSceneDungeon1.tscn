@@ -288,7 +288,7 @@ grow_vertical = 2
 rotation = -0.05061301
 theme_override_font_sizes/normal_font_size = 16
 text = "Hope for a better future
-Dices thrown 5-6. You have hope of surviving and retunring with enought gold to survive this bleak world.
+Dices result 5-6. You have hope of surviving and retunring with enought gold to survive this bleak world.
 Gain 3 more dices before entering the dungeon."
 scroll_active = false
 

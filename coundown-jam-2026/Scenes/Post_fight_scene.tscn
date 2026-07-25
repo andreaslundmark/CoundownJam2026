@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_vgnes"]
 [ext_resource type="AudioStream" uid="uid://dn18faa1refrf" path="res://Sounds/FirelinkMimic.wav" id="3_2jmhj"]
 
-[node name="PostFightScene" type="Control" unique_id=731409411 node_paths=PackedStringArray("postFightWinnerResult")]
+[node name="PostFightScene" type="Control" unique_id=731409411 node_paths=PackedStringArray("postFightWinnerResult", "postGoldEarningResult")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0omks")
 postFightWinnerResult = NodePath("InfoHolder/VBoxContainer/PostWinnerResult")
+postGoldEarningResult = NodePath("InfoHolder/GoldResult")
 
 [node name="TempBackgroundWithoutText" type="Sprite2D" parent="." unique_id=1790574393]
 position = Vector2(966.5, 535)
@@ -29,27 +30,29 @@ offset_right = 0.4399414
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GoldLabel" type="RichTextLabel" parent="InfoHolder" unique_id=151855601]
+[node name="GoldLabel" type="Label" parent="InfoHolder" unique_id=1367402552]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
-offset_top = 502.0
-offset_right = 464.0
-offset_bottom = 618.0
-theme_override_font_sizes/normal_font_size = 50
-text = "Gold
-"
+offset_left = 51.0
+offset_top = 529.0
+offset_right = 413.0
+offset_bottom = 592.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "Gold"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="GoldAmount" type="RichTextLabel" parent="InfoHolder" unique_id=1153528319]
+[node name="GoldResult" type="Label" parent="InfoHolder" unique_id=1470585728]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
-offset_top = 567.0
-offset_right = 464.0
-offset_bottom = 683.0
-theme_override_font_sizes/normal_font_size = 50
-text = "0
-"
+offset_left = 93.0
+offset_top = 596.0
+offset_right = 370.0
+offset_bottom = 659.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "0"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InfoHolder" unique_id=233675693]
 layout_mode = 1

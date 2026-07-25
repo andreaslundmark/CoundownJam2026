@@ -1,10 +1,12 @@
 extends Control
 
 @export var postFightWinnerResult:Label
+@export var postGoldEarningResult:Label
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	postFightWinnerResult.text = GameManager.postFightWinner
+	postGoldEarningResult.text = GameManager.postGoldChange
 	pass # Replace with function body.
 
 func _on_back_to_menu_button_pressed() -> void:
