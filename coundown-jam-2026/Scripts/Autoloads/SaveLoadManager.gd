@@ -4,9 +4,16 @@ extends Node
 var scriptName: String = "SaveLoadManager: "
 const FILE_PATH: String = "user://CoundownJam2026SaveFile.json" # using user so it is read and write and saved at \Users\<YourUsername>\AppData\Roaming\Godot\app_userdata\<YourProjectName>\
 
+var reset_save_data: Dictionary = {
+	"seenTutorial": false,
+	"playerGold": 0,
+	"diceAmount": 11
+}
+
 var save_data: Dictionary = {
 	"seenTutorial": false,
-	"playerGold": 50
+	"playerGold": 0,
+	"diceAmount": 11
 }
 
 func _ready() -> void:

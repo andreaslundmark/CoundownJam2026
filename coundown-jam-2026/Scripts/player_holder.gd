@@ -1,9 +1,9 @@
 extends Node
 
-var diceAmount: int = 10;
+var diceAmount: int;
 var dicesLeftLabel: Label;
 var diceToThrowLabel: Label;
-var dicesToThrow = 3;
+var dicesToThrow = 1;
 var maxAmountToThrow = 5;
 var increaseButton: Button;
 var decreaseButton: Button;
@@ -27,6 +27,8 @@ func _ready() -> void:
 	decreaseButton = fightingSceneNode.decreaseButton
 	diceToThrowLabel.text = str(dicesToThrow)
 	dicesLeftLabel.text = str(diceAmount);
+	playerGold = SaveLoadManager.save_data.playerGold
+	diceAmount = SaveLoadManager.save_data.diceAmount
 	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,8 +49,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _DecreaseDiceAmount(value: int = 1) -> void:
-	diceAmount -= value;
-	dicesLeftLabel.text = str(diceAmount);
+		SaveLoadManager.save_data.diceAmount = (diceAmount-1)
+		SaveLoadManager._saveGame()
+		diceAmount = SaveLoadManager.save_data.diceAmount
+		dicesLeftLabel.text = str(diceAmount);
 	
 func _IncreaseDiceThrowAmount() -> void:
 	if dicesToThrow < diceAmount && dicesToThrow < maxAmountToThrow:
@@ -73,7 +77,10 @@ func _throwDices() -> void:
 		fightingSceneNode._resetThrowResult()
 		diceThrowResult = 0
 		diceThrown = true;
-		fightingSceneNode.enemyHolder._decreaseThrowAmount()
+		if fightingSceneNode != null:
+			fightingSceneNode.resultReported = false
+			if fightingSceneNode.enemyHolder != null:
+				fightingSceneNode.enemyHolder._decreaseThrowAmount()
 		for i in range(dicesToThrow):
 			var new_scene = diceSpawner.sceneToInstantiate.instantiate()
 			add_child(new_scene)

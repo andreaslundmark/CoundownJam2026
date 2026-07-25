@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bq0clq3m1qgjx" path="res://Scripts/fighting_scene.gd" id="1_1ws7k"]
 [ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tx861"]
 [ext_resource type="PackedScene" uid="uid://csgysvsgo3152" path="res://Scenes/EnemyHolder.tscn" id="3_kro36"]
+[ext_resource type="AudioStream" uid="uid://yevi4oi5o7x" path="res://Sounds/MenuDrone.wav" id="4_1ws7k"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ajtct"]
 size = Vector2(30, 30)
@@ -19,11 +20,11 @@ bounce = 1.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_ajtct"]
 size = Vector3(6.8652344, 1, 1)
 
-[sub_resource type="Sky" id="Sky_idj7w"]
+[sub_resource type="Sky" id="Sky_tx861"]
 
 [sub_resource type="Environment" id="Environment_ostoq"]
 background_mode = 1
-sky = SubResource("Sky_idj7w")
+sky = SubResource("Sky_tx861")
 ambient_light_color = Color(0.7283931, 0.62410665, 0.24561602, 1)
 reflected_light_source = 2
 
@@ -144,6 +145,7 @@ text = "Dices Left"
 [node name="DicesLeftAmount" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer" unique_id=155598799]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "0"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/PlayerUI/PlayerTopContainer" unique_id=2086953322]
 layout_mode = 2
@@ -156,7 +158,7 @@ text = "Throws Left"
 [node name="EnemyThrowAmount" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer2" unique_id=1834995708]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "7"
+text = "0"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Control/PlayerUI/PlayerTopContainer" unique_id=1394249270]
 layout_mode = 2
@@ -169,6 +171,7 @@ text = "Dice result"
 [node name="ResultAmount" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer3" unique_id=376640303]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "0"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Control/PlayerUI/PlayerTopContainer" unique_id=1531672891]
 layout_mode = 2
@@ -194,6 +197,7 @@ text = "Dice to throw"
 
 [node name="DiceToThrowAmount" type="Label" parent="Control/PlayerUI/PlayerBotContainer" unique_id=94035219]
 layout_mode = 2
+text = "0"
 
 [node name="Increase" type="Button" parent="Control/PlayerUI/PlayerBotContainer" unique_id=702453257]
 layout_mode = 2
@@ -231,7 +235,7 @@ offset_top = -0.2800007
 offset_bottom = -0.040008545
 grow_horizontal = 2
 theme_override_font_sizes/normal_font_size = 45
-text = "The Saint Of Rot"
+text = "Rotting Corpse"
 scroll_active = false
 vertical_alignment = 1
 
@@ -244,88 +248,100 @@ anchor_bottom = 0.23700002
 offset_top = -0.20000458
 offset_bottom = 0.039978027
 grow_horizontal = 2
-text = "He does not ask for prayers. He does not seek salvation or offers it. His smile is a grin full of things that squirm. He speaks of decay like a lover, offering pieces of himself in trade for pieces of youself"
+theme_override_font_sizes/normal_font_size = 20
+text = "Walking the halls of this forsaken dungeon without a goal. Turning his anger and frustration towards you, spreading desease and filth "
 scroll_active = false
 
 [node name="Effects" type="RichTextLabel" parent="Control/EnemyElements" unique_id=756381361]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.034843206
-anchor_bottom = 0.06153846
-offset_left = 29.193604
-offset_top = 254.0
-offset_right = 327.80032
-offset_bottom = 337.53845
+anchor_left = 0.06820936
+anchor_top = 0.23518519
+anchor_right = 0.75573176
+anchor_bottom = 0.40643355
+offset_right = 19.26004
+offset_bottom = -34.948242
 grow_horizontal = 0
 grow_vertical = 2
 rotation = 0.114876606
 text = "Stumble into a plauge pit
 Dice result 10-15. Maggots of plauge reaches you lungs.You have to remove one more dice next throw."
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Effects2" type="RichTextLabel" parent="Control/EnemyElements" unique_id=608157982]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.034843206
-anchor_bottom = 0.06153846
-offset_left = 20.95653
-offset_top = 437.0
-offset_right = 319.56323
-offset_bottom = 520.53845
+anchor_left = 0.048963856
+anchor_top = 0.40462962
+anchor_right = 0.7960929
+anchor_bottom = 0.53070825
+offset_right = -6.251648
+offset_bottom = 13.835083
 grow_horizontal = 0
 grow_vertical = 2
 rotation = -0.04368577
 text = "Hope And Despair
 Dice result 6. Hope of getting rid of the rotten maggots increases with each second. Add 5 dices to you dice amount. Dice result 1 you lose half you dices."
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Effects3" type="RichTextLabel" parent="Control/EnemyElements" unique_id=235100753]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.034843206
-anchor_bottom = 0.06153846
-offset_left = 22.95653
-offset_top = 589.00006
-offset_right = 321.56323
-offset_bottom = 672.5385
-grow_horizontal = 0
+anchor_left = 0.053636752
+anchor_top = 0.5453704
+anchor_right = 0.77051824
+anchor_bottom = 0.69653416
+offset_right = 6.694336
+offset_bottom = -13.256836
+grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.042733766
 text = "Power is not required here
 Dices thrown 4-5. Overpowering rot and decay rarely work, the overuse of force result in you getting more sick. Deal half amount of damage rolled."
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Effects4" type="RichTextLabel" parent="Control/EnemyElements" unique_id=1738568659]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.034843206
-anchor_bottom = 0.06153846
-offset_left = 23.956543
-offset_top = 746.0
-offset_right = 322.56326
-offset_bottom = 829.53845
+anchor_left = 0.05597323
+anchor_top = 0.69074076
+anchor_right = 0.8129207
+anchor_bottom = 0.8072593
+offset_right = -10.453888
+offset_bottom = 24.159912
 grow_horizontal = 0
 grow_vertical = 2
 rotation = -0.07576032
 text = "Undiscovered but not unaffected
 Dices thrown 1. Gain 3 dices if the dice result is lower than 3."
 scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="EnemyHealthLabel" type="Label" parent="Control/EnemyElements" unique_id=1791564520]
 layout_mode = 0
-offset_left = 63.956543
-offset_top = 955.0
-offset_right = 171.95654
-offset_bottom = 978.0
+anchor_left = -0.023364486
+anchor_top = 0.87685186
+anchor_right = 0.49309218
+anchor_bottom = 0.93796295
+theme_override_font_sizes/font_size = 25
 text = "Enemy Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="EnemyHealthAmount" type="Label" parent="Control/EnemyElements" unique_id=1151737722]
 layout_mode = 0
-offset_left = 191.95654
-offset_top = 955.0
-offset_right = 299.95654
-offset_bottom = 978.0
+anchor_left = 0.50233644
+anchor_top = 0.875
+anchor_right = 0.89719623
+anchor_bottom = 0.9398148
+theme_override_font_sizes/font_size = 25
 text = "42"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1459958143]
 transform = Transform3D(1, 0, 0, 0, 0.017851314, 0.9998407, 0, -0.9998407, 0.017851314, 0, 19.540787, 0)
@@ -348,6 +364,11 @@ enemyEffect3 = NodePath("../Control/EnemyElements/Effects3")
 enemyEffect4 = NodePath("../Control/EnemyElements/Effects4")
 enemyHealthAmount = NodePath("../Control/EnemyElements/EnemyHealthAmount")
 enemyThrowAmount = NodePath("../Control/PlayerUI/PlayerTopContainer/HBoxContainer2/EnemyThrowAmount")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=541739411]
+stream = ExtResource("4_1ws7k")
+volume_db = -16.0
+autoplay = true
 
 [connection signal="pressed" from="Control/PlayerUI/PlayerBotContainer/Increase" to="." method="_on_increase_pressed"]
 [connection signal="pressed" from="Control/PlayerUI/PlayerBotContainer/Decrease" to="." method="_on_decrease_pressed"]

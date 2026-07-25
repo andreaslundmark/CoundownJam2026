@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://htd8v8je5qn4" path="res://Scripts/post_fight_scene.gd" id="1_0omks"]
 [ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_vgnes"]
+[ext_resource type="AudioStream" uid="uid://dn18faa1refrf" path="res://Sounds/FirelinkMimic.wav" id="3_2jmhj"]
 
 [node name="PostFightScene" type="Control" unique_id=731409411 node_paths=PackedStringArray("postFightWinnerResult")]
 layout_mode = 3
@@ -28,6 +29,28 @@ offset_right = 0.4399414
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="GoldLabel" type="RichTextLabel" parent="InfoHolder" unique_id=151855601]
+layout_mode = 0
+offset_top = 502.0
+offset_right = 464.0
+offset_bottom = 618.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Gold
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoldAmount" type="RichTextLabel" parent="InfoHolder" unique_id=1153528319]
+layout_mode = 0
+offset_top = 567.0
+offset_right = 464.0
+offset_bottom = 683.0
+theme_override_font_sizes/normal_font_size = 50
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="InfoHolder" unique_id=233675693]
 layout_mode = 1
 anchors_preset = -1
@@ -43,12 +66,14 @@ grow_vertical = 2
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
 text = "Post Fight Result"
 
 [node name="PostWinnerResult" type="Label" parent="InfoHolder/VBoxContainer" unique_id=540418324]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
 text = "Fight Winner"
 
 [node name="BackToMenuButton" type="Button" parent="InfoHolder" unique_id=465636448]
@@ -66,5 +91,10 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2.0175397, 2.8361466)
 text = "Back to menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=845683623]
+stream = ExtResource("3_2jmhj")
+volume_db = -16.0
+autoplay = true
 
 [connection signal="pressed" from="InfoHolder/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
