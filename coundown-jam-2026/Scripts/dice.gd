@@ -2,27 +2,27 @@ extends RigidBody3D
 
 @onready var diceChildren = $ChildFaces.get_children()
 @export var diceFaceSelected:Node3D;
-var dice_start_pos;
-var throw_strengt = 30;
+var diceStartPos;
+var throwStrengt = 30;
 
-var is_rolling: bool = false
-signal roll_finished(value)
+var isRolling: bool = false
+signal rollFinished(value)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	throw_strengt = randf_range(60,180)
-	dice_start_pos = global_position;
+	throwStrengt = randf_range(60,180)
+	diceStartPos = global_position;
 	_rollDice(); #we roll the dice in ready because we will instantiate them
 	pass # Replace with function body.
 	
 func _rollDice() -> void:
 	#resetState
 	#print("Roll Dice")
-	is_rolling = true;
+	isRolling = true;
 	diceFaceSelected = null;
 	sleeping = false
 	freeze = false
-	transform.origin = dice_start_pos
+	transform.origin = diceStartPos
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	
@@ -32,8 +32,8 @@ func _rollDice() -> void:
 	transform.basis = Basis(Vector3.FORWARD, randf_range(0, 2*PI)) * transform.basis
 	
 	var throw_vector = Vector3(randf_range(-1,1),0,randf_range(-1,1)).normalized()
-	angular_velocity = throw_vector * throw_strengt /2
-	apply_central_impulse(throw_vector * throw_strengt)
+	angular_velocity = throw_vector * throwStrengt /2
+	apply_central_impulse(throw_vector * throwStrengt)
 
 
 func _on_sleeping_state_changed() -> void:
@@ -44,8 +44,8 @@ func _on_sleeping_state_changed() -> void:
 				highestYValue = i.global_position.y
 				diceFaceSelected = i
 	
-	is_rolling = false		
-	roll_finished.emit(diceFaceSelected.integerValue)	
+	isRolling = false		
+	rollFinished.emit(diceFaceSelected.integerValue)	
 	print(diceFaceSelected.name)
 			
 	pass # Replace with function body.

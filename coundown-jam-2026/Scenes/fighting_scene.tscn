@@ -30,12 +30,12 @@ reflected_light_source = 2
 [node name="FightingScene" type="Node3D" unique_id=293250360 node_paths=PackedStringArray("enemyHolder", "resultLabel", "dicesLeftLabel", "diceToThrowLabel", "increaseButton", "decreaseButton", "throwButton")]
 script = ExtResource("1_1ws7k")
 enemyHolder = NodePath("EnemyHolder")
-resultLabel = NodePath("Control/PlayerUI/ResultAmount")
-dicesLeftLabel = NodePath("Control/PlayerUI/DicesLeftAmount")
-diceToThrowLabel = NodePath("Control/PlayerUI/DiceToThrowAmount")
-increaseButton = NodePath("Control/PlayerUI/Increase")
-decreaseButton = NodePath("Control/PlayerUI/Decrease")
-throwButton = NodePath("Control/PlayerUI/Throw")
+resultLabel = NodePath("Control/PlayerUI/PlayerTopContainer/HBoxContainer3/ResultAmount")
+dicesLeftLabel = NodePath("Control/PlayerUI/PlayerTopContainer/HBoxContainer/DicesLeftAmount")
+diceToThrowLabel = NodePath("Control/PlayerUI/PlayerBotContainer/DiceToThrowAmount")
+increaseButton = NodePath("Control/PlayerUI/PlayerBotContainer/Increase")
+decreaseButton = NodePath("Control/PlayerUI/PlayerBotContainer/Decrease")
+throwButton = NodePath("Control/PlayerUI/PlayerBotContainer/Throw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1817981142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27946854, 0, 0)
@@ -106,85 +106,6 @@ offset_right = 3.1999817
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="DiceResultLabel" type="Label" parent="Control/PlayerUI" unique_id=979886120]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 30.0
-offset_right = 129.0
-offset_bottom = 56.0
-text = "Dice result"
-
-[node name="DiceToThrowLabel" type="Label" parent="Control/PlayerUI" unique_id=645354926]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 198.0
-offset_right = 147.0
-offset_bottom = 224.0
-text = "Dice to throw"
-
-[node name="DiceToThrowAmount" type="Label" parent="Control/PlayerUI" unique_id=94035219]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 232.0
-offset_right = 85.0
-offset_bottom = 255.0
-scale = Vector2(2.5643322, 1.5285896)
-
-[node name="DiceLeftLabel" type="Label" parent="Control/PlayerUI" unique_id=1766418657]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 93.0
-offset_right = 136.0
-offset_bottom = 119.0
-text = "Dices Left"
-
-[node name="DicesLeftAmount" type="Label" parent="Control/PlayerUI" unique_id=155598799]
-layout_mode = 0
-offset_left = 142.0
-offset_top = 91.0
-offset_right = 182.0
-offset_bottom = 114.0
-scale = Vector2(2.48, 1.5179489)
-
-[node name="ResultAmount" type="Label" parent="Control/PlayerUI" unique_id=376640303]
-layout_mode = 0
-offset_left = 130.0
-offset_top = 24.0
-offset_right = 352.0
-offset_bottom = 59.0
-
-[node name="Increase" type="Button" parent="Control/PlayerUI" unique_id=702453257]
-layout_mode = 0
-offset_left = 40.000046
-offset_top = 152.00002
-offset_right = 114.000046
-offset_bottom = 183.00002
-scale = Vector2(1.3186998, 1.3523715)
-text = "Increase
-"
-
-[node name="Decrease" type="Button" parent="Control/PlayerUI" unique_id=386430526]
-layout_mode = 0
-offset_left = 43.00003
-offset_top = 281.0
-offset_right = 123.00003
-offset_bottom = 312.0
-scale = Vector2(1.3186998, 1.3523715)
-text = "Decrease
-
-"
-
-[node name="Throw" type="Button" parent="Control/PlayerUI" unique_id=1112505147]
-layout_mode = 0
-offset_left = 45.000023
-offset_top = 336.0
-offset_right = 125.00002
-offset_bottom = 367.0
-scale = Vector2(1.3186998, 1.3523715)
-text = "Throw
-
-"
-
 [node name="FightDoneLabel" type="Label" parent="Control/PlayerUI" unique_id=1690290647]
 visible = false
 layout_mode = 0
@@ -198,40 +119,131 @@ the fight is done"
 horizontal_alignment = 1
 uppercase = true
 
+[node name="PlayerTopContainer" type="VBoxContainer" parent="Control/PlayerUI" unique_id=1319633896]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.091000006
+anchor_top = 0.030000001
+anchor_right = 1.0910001
+anchor_bottom = 0.48800004
+offset_left = -0.12000275
+offset_top = -0.40000153
+offset_right = -0.120025635
+offset_bottom = -0.040039063
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PlayerUI/PlayerTopContainer" unique_id=1844609411]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="DiceLeftLabel" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer" unique_id=1766418657]
+layout_mode = 2
+text = "Dices Left"
+
+[node name="DicesLeftAmount" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer" unique_id=155598799]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/PlayerUI/PlayerTopContainer" unique_id=2086953322]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="EnemyThrowLabel" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer2" unique_id=1508404831]
+layout_mode = 2
+text = "Throws Left"
+
+[node name="EnemyThrowAmount" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer2" unique_id=1834995708]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "7"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/PlayerUI/PlayerTopContainer" unique_id=1394249270]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="DiceResultLabel" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer3" unique_id=979886120]
+layout_mode = 2
+text = "Dice result"
+
+[node name="ResultAmount" type="Label" parent="Control/PlayerUI/PlayerTopContainer/HBoxContainer3" unique_id=376640303]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/PlayerUI/PlayerTopContainer" unique_id=1531672891]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="PlayerBotContainer" type="VBoxContainer" parent="Control/PlayerUI" unique_id=1647688227]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.091000006
+anchor_top = 0.48700002
+anchor_right = 1.0910001
+anchor_bottom = 0.9710001
+offset_left = -0.12000275
+offset_top = 0.039978027
+offset_right = -0.120025635
+offset_bottom = 0.3199463
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiceToThrowLabel" type="Label" parent="Control/PlayerUI/PlayerBotContainer" unique_id=645354926]
+layout_mode = 2
+text = "Dice to throw"
+
+[node name="DiceToThrowAmount" type="Label" parent="Control/PlayerUI/PlayerBotContainer" unique_id=94035219]
+layout_mode = 2
+
+[node name="Increase" type="Button" parent="Control/PlayerUI/PlayerBotContainer" unique_id=702453257]
+layout_mode = 2
+text = "Increase
+"
+
+[node name="Decrease" type="Button" parent="Control/PlayerUI/PlayerBotContainer" unique_id=386430526]
+layout_mode = 2
+text = "Decrease
+
+"
+
+[node name="Throw" type="Button" parent="Control/PlayerUI/PlayerBotContainer" unique_id=1112505147]
+layout_mode = 2
+text = "Throw
+
+"
+
 [node name="EnemyElements" type="Control" parent="Control" unique_id=503199739]
 layout_mode = 1
 anchor_left = 0.69900006
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -7.080078
+offset_left = 149.91992
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Name" type="RichTextLabel" parent="Control/EnemyElements" unique_id=911707215]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.034843206
-anchor_bottom = 0.06153846
-offset_left = 179.23706
-offset_top = 27.0
-offset_right = 477.8434
-offset_bottom = 124.53846
-grow_horizontal = 0
-grow_vertical = 2
+anchor_top = 0.016
+anchor_right = 1.0
+anchor_bottom = 0.08800001
+offset_top = -0.2800007
+offset_bottom = -0.040008545
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 45
 text = "The Saint Of Rot"
 scroll_active = false
+vertical_alignment = 1
 
 [node name="FlavourText" type="RichTextLabel" parent="Control/EnemyElements" unique_id=1337199574]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.034843206
-anchor_bottom = 0.06153846
-offset_left = 179.23706
-offset_top = 81.0
-offset_right = 477.8434
-offset_bottom = 278.53845
-grow_horizontal = 0
-grow_vertical = 2
+anchor_top = 0.09
+anchor_right = 1.0
+anchor_bottom = 0.23700002
+offset_top = -0.20000458
+offset_bottom = 0.039978027
+grow_horizontal = 2
 text = "He does not ask for prayers. He does not seek salvation or offers it. His smile is a grin full of things that squirm. He speaks of decay like a lover, offering pieces of himself in trade for pieces of youself"
 scroll_active = false
 
@@ -240,9 +252,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.034843206
 anchor_bottom = 0.06153846
-offset_left = 179.23706
+offset_left = 29.193604
 offset_top = 254.0
-offset_right = 477.84378
+offset_right = 327.80032
 offset_bottom = 337.53845
 grow_horizontal = 0
 grow_vertical = 2
@@ -256,9 +268,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.034843206
 anchor_bottom = 0.06153846
-offset_left = 171.0
+offset_left = 20.95653
 offset_top = 437.0
-offset_right = 469.60672
+offset_right = 319.56323
 offset_bottom = 520.53845
 grow_horizontal = 0
 grow_vertical = 2
@@ -272,9 +284,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.034843206
 anchor_bottom = 0.06153846
-offset_left = 173.0
+offset_left = 22.95653
 offset_top = 589.00006
-offset_right = 471.60672
+offset_right = 321.56323
 offset_bottom = 672.5385
 grow_horizontal = 0
 grow_vertical = 2
@@ -288,9 +300,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.034843206
 anchor_bottom = 0.06153846
-offset_left = 174.0
+offset_left = 23.956543
 offset_top = 746.0
-offset_right = 472.60672
+offset_right = 322.56326
 offset_bottom = 829.53845
 grow_horizontal = 0
 grow_vertical = 2
@@ -301,35 +313,19 @@ scroll_active = false
 
 [node name="EnemyHealthLabel" type="Label" parent="Control/EnemyElements" unique_id=1791564520]
 layout_mode = 0
-offset_left = 214.0
+offset_left = 63.956543
 offset_top = 955.0
-offset_right = 322.0
+offset_right = 171.95654
 offset_bottom = 978.0
 text = "Enemy Health"
 
 [node name="EnemyHealthAmount" type="Label" parent="Control/EnemyElements" unique_id=1151737722]
 layout_mode = 0
-offset_left = 342.0
+offset_left = 191.95654
 offset_top = 955.0
-offset_right = 450.0
+offset_right = 299.95654
 offset_bottom = 978.0
 text = "42"
-
-[node name="EnemyThrowLabel" type="Label" parent="Control/EnemyElements" unique_id=1508404831]
-layout_mode = 0
-offset_left = -1298.0
-offset_top = 62.0
-offset_right = -1190.0
-offset_bottom = 85.0
-text = "Throws Left"
-
-[node name="EnemyThrowAmount" type="Label" parent="Control/EnemyElements" unique_id=1834995708]
-layout_mode = 0
-offset_left = -1190.0
-offset_top = 62.0
-offset_right = -1082.0
-offset_bottom = 85.0
-text = "7"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1459958143]
 transform = Transform3D(1, 0, 0, 0, 0.017851314, 0.9998407, 0, -0.9998407, 0.017851314, 0, 19.540787, 0)
@@ -351,8 +347,8 @@ enemyEffect2 = NodePath("../Control/EnemyElements/Effects2")
 enemyEffect3 = NodePath("../Control/EnemyElements/Effects3")
 enemyEffect4 = NodePath("../Control/EnemyElements/Effects4")
 enemyHealthAmount = NodePath("../Control/EnemyElements/EnemyHealthAmount")
-enemyThrowAmount = NodePath("../Control/EnemyElements/EnemyThrowAmount")
+enemyThrowAmount = NodePath("../Control/PlayerUI/PlayerTopContainer/HBoxContainer2/EnemyThrowAmount")
 
-[connection signal="pressed" from="Control/PlayerUI/Increase" to="." method="_on_increase_pressed"]
-[connection signal="pressed" from="Control/PlayerUI/Decrease" to="." method="_on_decrease_pressed"]
-[connection signal="pressed" from="Control/PlayerUI/Throw" to="." method="_on_throw_pressed"]
+[connection signal="pressed" from="Control/PlayerUI/PlayerBotContainer/Increase" to="." method="_on_increase_pressed"]
+[connection signal="pressed" from="Control/PlayerUI/PlayerBotContainer/Decrease" to="." method="_on_decrease_pressed"]
+[connection signal="pressed" from="Control/PlayerUI/PlayerBotContainer/Throw" to="." method="_on_throw_pressed"]

@@ -10,4 +10,4 @@ script = ExtResource("1_5j1lf")
 [node name="DiceSpawner" type="Node3D" parent="." unique_id=1124139008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
 script = ExtResource("2_lvcx2")
-scene_to_instantiate = ExtResource("3_lvcx2")
+sceneToInstantiate = ExtResource("3_lvcx2")

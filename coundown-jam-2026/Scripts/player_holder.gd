@@ -4,27 +4,27 @@ var diceAmount: int = 10;
 var dicesLeftLabel: Label;
 var diceToThrowLabel: Label;
 var dicesToThrow = 3;
-var max_amount_to_throw = 5;
+var maxAmountToThrow = 5;
 var increaseButton: Button;
 var decreaseButton: Button;
 var throwButton: Button;
 
-var dice_throw_result:int = 0;
-var dice_throw_result_reported: bool = false;
+var diceThrowResult:int = 0;
+var diceThrowResultReported: bool = false;
 
 var diceThrown: bool = false;
 var diceSpawner: Node3D;
-@export var fighting_scene: Node3D;
+@export var fightingSceneNode: Node3D;
 
 var playerGold = 100;
 
 func _ready() -> void:
 	diceSpawner = $DiceSpawner
-	dicesLeftLabel = fighting_scene.dicesLeftLabel
-	diceToThrowLabel = fighting_scene.diceToThrowLabel
-	increaseButton = fighting_scene.increaseButton
-	decreaseButton = fighting_scene.decreaseButton
-	decreaseButton = fighting_scene.decreaseButton
+	dicesLeftLabel = fightingSceneNode.dicesLeftLabel
+	diceToThrowLabel = fightingSceneNode.diceToThrowLabel
+	increaseButton = fightingSceneNode.increaseButton
+	decreaseButton = fightingSceneNode.decreaseButton
+	decreaseButton = fightingSceneNode.decreaseButton
 	diceToThrowLabel.text = str(dicesToThrow)
 	dicesLeftLabel.text = str(diceAmount);
 	pass
@@ -33,17 +33,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if diceThrown:
 		for i in range(diceSpawner.instnciatedDiceArray.size()):
-			if diceSpawner.instnciatedDiceArray[i].is_rolling:
+			if diceSpawner.instnciatedDiceArray[i].isRolling:
 				break
 			elif i >= (diceSpawner.instnciatedDiceArray.size()-1): #if the for loop got to the end without any dice is rolling then the throw is done
 				print("throw done")
 				diceThrown = false	
 	if !diceThrown && diceSpawner.instnciatedDiceArray.size() > 0:
 		for i in range(diceSpawner.instnciatedDiceArray.size()):
-			dice_throw_result += diceSpawner.instnciatedDiceArray[i].diceFaceSelected.integerValue
-		if !dice_throw_result_reported:
-			fighting_scene._reportThrowResult(dice_throw_result)
-			dice_throw_result_reported = true
+			diceThrowResult += diceSpawner.instnciatedDiceArray[i].diceFaceSelected.integerValue
+		if !diceThrowResultReported:
+			fightingSceneNode._reportThrowResult(diceThrowResult)
+			diceThrowResultReported = true
 	pass
 
 func _DecreaseDiceAmount(value: int = 1) -> void:
@@ -51,7 +51,7 @@ func _DecreaseDiceAmount(value: int = 1) -> void:
 	dicesLeftLabel.text = str(diceAmount);
 	
 func _IncreaseDiceThrowAmount() -> void:
-	if dicesToThrow < diceAmount && dicesToThrow < max_amount_to_throw:
+	if dicesToThrow < diceAmount && dicesToThrow < maxAmountToThrow:
 		dicesToThrow += 1;
 	else:
 		#print("Can not increase more!")
@@ -68,14 +68,14 @@ func _DecreaseDiceThrowAmount() -> void:
 
 func _throwDices() -> void:
 	if diceAmount > 0 && !diceThrown:
-		dice_throw_result_reported = false
+		diceThrowResultReported = false
 		_clearInstanciatedDices()
-		fighting_scene._resetThrowResult()
-		dice_throw_result = 0
+		fightingSceneNode._resetThrowResult()
+		diceThrowResult = 0
 		diceThrown = true;
-		fighting_scene.enemyHolder._decreaseThrowAmount()
+		fightingSceneNode.enemyHolder._decreaseThrowAmount()
 		for i in range(dicesToThrow):
-			var new_scene = diceSpawner.scene_to_instantiate.instantiate()
+			var new_scene = diceSpawner.sceneToInstantiate.instantiate()
 			add_child(new_scene)
 			diceSpawner.instnciatedDiceArray.append(new_scene)
 			_DecreaseDiceAmount();

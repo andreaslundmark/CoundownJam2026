@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tt5f1"]
 [ext_resource type="AudioStream" uid="uid://yevi4oi5o7x" path="res://Sounds/MenuDrone.wav" id="3_8saeu"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ostoq"]
+bg_color = Color(0.116475604, 0.28050426, 0.22765413, 1)
+
 [node name="MainMenu" type="Control" unique_id=341634203]
 layout_mode = 3
 anchors_preset = 15
@@ -20,12 +23,26 @@ scale = Vector2(3.9330654, 1.083)
 texture = ExtResource("1_tt5f1")
 flip_h = true
 
+[node name="MenuNameLabel" type="Label" parent="." unique_id=270416612]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.19000001
+offset_bottom = -0.2000122
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 150
+text = "Game Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MenuButtonsMiddle" type="Control" parent="." unique_id=1215564094]
 layout_mode = 1
 anchor_left = 0.261
+anchor_top = 0.24000001
 anchor_right = 0.70600003
 anchor_bottom = 1.005
 offset_left = -0.120025635
+offset_top = -0.2000122
 offset_right = 0.47998047
 offset_bottom = -0.4000244
 
@@ -47,18 +64,22 @@ grow_vertical = 2
 custom_minimum_size = Vector2(350, 150)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ostoq")
 text = "Start Game"
 
 [node name="Options" type="Button" parent="MenuButtonsMiddle/VBoxContainer" unique_id=1338354926]
 custom_minimum_size = Vector2(350, 150)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
 text = "Options"
 
 [node name="Exit Game" type="Button" parent="MenuButtonsMiddle/VBoxContainer" unique_id=1084738005]
 custom_minimum_size = Vector2(350, 150)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
 text = "Exit Game"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=319376971]

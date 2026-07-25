@@ -7,8 +7,8 @@
 [node name="Main" type="Node3D" unique_id=1471205464]
 script = ExtResource("1_idj7w")
 
-[node name="PlayerHolder" parent="." unique_id=1661349083 node_paths=PackedStringArray("fighting_scene") instance=ExtResource("2_kln2b")]
-fighting_scene = NodePath("../FightingScene")
+[node name="PlayerHolder" parent="." unique_id=1661349083 node_paths=PackedStringArray("fightingSceneNode") instance=ExtResource("2_kln2b")]
+fightingSceneNode = NodePath("../FightingScene")
 
 [node name="FightingScene" parent="." unique_id=293250360 node_paths=PackedStringArray("playerHolder") instance=ExtResource("2_idj7w")]
 playerHolder = NodePath("../PlayerHolder")

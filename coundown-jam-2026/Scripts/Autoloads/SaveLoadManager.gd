@@ -1,4 +1,5 @@
 extends Node
+#initial variation of script found here https://www.youtube.com/watch?v=Dw45NlwIORY
 
 var scriptName: String = "SaveLoadManager: "
 const FILE_PATH: String = "user://CoundownJam2026SaveFile.json" # using user so it is read and write and saved at \Users\<YourUsername>\AppData\Roaming\Godot\app_userdata\<YourProjectName>\
