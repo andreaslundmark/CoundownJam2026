@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://ed705w8svysy"]
 
 [ext_resource type="Script" uid="uid://bq0clq3m1qgjx" path="res://Scripts/fighting_scene.gd" id="1_1ws7k"]
-[ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tx861"]
+[ext_resource type="Texture2D" uid="uid://dbp8x8myn87dn" path="res://Graphics/tempmenu.png" id="2_1ws7k"]
 [ext_resource type="PackedScene" uid="uid://csgysvsgo3152" path="res://Scenes/EnemyHolder.tscn" id="3_kro36"]
 [ext_resource type="AudioStream" uid="uid://yevi4oi5o7x" path="res://Sounds/MenuDrone.wav" id="4_1ws7k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kro36"]
+albedo_texture = ExtResource("2_1ws7k")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ajtct"]
 size = Vector2(30, 30)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qgl4n"]
+load_path = "res://.godot/imported/TempBackgroundWithoutText.jpg-bc830dfabef616b1605d397ed7b8615c.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_loq3h"]
-albedo_texture = ExtResource("1_tx861")
+albedo_texture = SubResource("CompressedTexture2D_qgl4n")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ostoq"]
 size = Vector3(1.1161499, 3.6791992, 1.1379395)
@@ -44,6 +50,7 @@ enemyEffectText4 = NodePath("Control/EnemyElements/Effects4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1817981142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27946854, 0, 0)
+material_override = SubResource("StandardMaterial3D_kro36")
 mesh = SubResource("PlaneMesh_ajtct")
 surface_material_override/0 = SubResource("StandardMaterial3D_loq3h")
 

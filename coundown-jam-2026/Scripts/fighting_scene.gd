@@ -38,15 +38,19 @@ func _reportThrowResult(value: int) -> void:
 				print("Player Win!")
 				GameManager.postFightWinner ="Player Wins!"
 				SaveLoadManager.save_data.playerGold += 50
+				SaveLoadManager.save_data.diceAmount = (playerHolder.diceAmount+8)
 				SaveLoadManager._saveGame()
 				GameManager.postGoldChange = "+50"
+				GameManager.postDiceChange = "+"+str(playerHolder.diceAmount+8)
 				print(SaveLoadManager.save_data.playerGold)
 			else:
 				print("Enemy win!")
 				GameManager.postFightWinner ="Enemy Wins!"
 				SaveLoadManager.save_data.playerGold -= 10
+				SaveLoadManager.save_data.diceAmount = (playerHolder.diceAmount+5)
 				SaveLoadManager._saveGame()
 				GameManager.postGoldChange = "-10"
+				GameManager.postDiceChange = "+"+str(playerHolder.diceAmount+5)
 				print(SaveLoadManager.save_data.playerGold)
 			SceneLoader.load_scene("uid://ctp2lhorcs1lu")
 			resultReported = true

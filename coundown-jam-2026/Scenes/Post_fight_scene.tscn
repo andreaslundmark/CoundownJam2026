@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ctp2lhorcs1lu"]
 
 [ext_resource type="Script" uid="uid://htd8v8je5qn4" path="res://Scripts/post_fight_scene.gd" id="1_0omks"]
-[ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_vgnes"]
+[ext_resource type="Texture2D" uid="uid://dbp8x8myn87dn" path="res://Graphics/tempmenu.png" id="2_2jmhj"]
 [ext_resource type="AudioStream" uid="uid://dn18faa1refrf" path="res://Sounds/FirelinkMimic.wav" id="3_2jmhj"]
 
-[node name="PostFightScene" type="Control" unique_id=731409411 node_paths=PackedStringArray("postFightWinnerResult", "postGoldEarningResult")]
+[node name="PostFightScene" type="Control" unique_id=731409411 node_paths=PackedStringArray("postFightWinnerResult", "postGoldEarningResult", "postDiceEarningResult")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,11 +14,12 @@ grow_vertical = 2
 script = ExtResource("1_0omks")
 postFightWinnerResult = NodePath("InfoHolder/VBoxContainer/PostWinnerResult")
 postGoldEarningResult = NodePath("InfoHolder/GoldResult")
+postDiceEarningResult = NodePath("InfoHolder/DiceResult")
 
-[node name="TempBackgroundWithoutText" type="Sprite2D" parent="." unique_id=1790574393]
-position = Vector2(966.5, 535)
-scale = Vector2(2.7595108, 1.0708812)
-texture = ExtResource("1_vgnes")
+[node name="Tempmenu" type="Sprite2D" parent="." unique_id=1590677663]
+position = Vector2(961.5, 543)
+scale = Vector2(1.0109375, 1.0055555)
+texture = ExtResource("2_2jmhj")
 
 [node name="InfoHolder" type="Control" parent="." unique_id=633493494]
 layout_mode = 1
@@ -49,6 +50,30 @@ offset_left = 93.0
 offset_top = 596.0
 offset_right = 370.0
 offset_bottom = 659.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "0"
+horizontal_alignment = 1
+
+[node name="DiceLabel" type="Label" parent="InfoHolder" unique_id=96424193]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 51.0
+offset_top = 659.0
+offset_right = 413.0
+offset_bottom = 722.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 45
+text = "Dice"
+horizontal_alignment = 1
+
+[node name="DiceResult" type="Label" parent="InfoHolder" unique_id=1252064394]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 93.0
+offset_top = 726.0
+offset_right = 370.0
+offset_bottom = 789.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 45
 text = "0"

@@ -1,15 +1,21 @@
 [gd_scene format=3 uid="uid://65kn7w5vtx2t"]
 
 [ext_resource type="Script" uid="uid://b8fewmgaelk68" path="res://Scripts/Event.gd" id="1_wowfo"]
-[ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="2_u384l"]
+[ext_resource type="Texture2D" uid="uid://dbp8x8myn87dn" path="res://Graphics/tempmenu.png" id="2_wkqv4"]
 [ext_resource type="PackedScene" uid="uid://ctc2yyc3pqm2p" path="res://Scenes/player_holder.tscn" id="3_u384l"]
 [ext_resource type="AudioStream" uid="uid://dn18faa1refrf" path="res://Sounds/FirelinkMimic.wav" id="4_wkqv4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lir8b"]
+albedo_texture = ExtResource("2_wkqv4")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wkqv4"]
 size = Vector2(30, 30)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qgl4n"]
+load_path = "res://.godot/imported/TempBackgroundWithoutText.jpg-bc830dfabef616b1605d397ed7b8615c.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj0v1"]
-albedo_texture = ExtResource("2_u384l")
+albedo_texture = SubResource("CompressedTexture2D_qgl4n")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lir8b"]
 size = Vector3(1.1161499, 3.6791992, 1.1379395)
@@ -43,6 +49,7 @@ effect3 = NodePath("Control/EventElements/Effects3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=66226453]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27946854, 0, 0)
+material_override = SubResource("StandardMaterial3D_lir8b")
 mesh = SubResource("PlaneMesh_wkqv4")
 surface_material_override/0 = SubResource("StandardMaterial3D_pj0v1")
 

@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://vk587e8ah278"]
 
 [ext_resource type="Script" uid="uid://1dmuvbgdh0hd" path="res://Scripts/main_menu.gd" id="1_853f1"]
-[ext_resource type="Texture2D" uid="uid://dnmshgfsd4vhe" path="res://Graphics/TempBackgroundWithoutText.jpg" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://dbp8x8myn87dn" path="res://Graphics/tempmenu.png" id="2_8saeu"]
 [ext_resource type="AudioStream" uid="uid://yevi4oi5o7x" path="res://Sounds/MenuDrone.wav" id="3_8saeu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ostoq"]
 bg_color = Color(0.116475604, 0.28050426, 0.22765413, 1)
 
-[node name="MainMenu" type="Control" unique_id=341634203 node_paths=PackedStringArray("currentGold", "currentDiceAmount")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajtct"]
+bg_color = Color(0.13682574, 0.13682574, 0.13682568, 1)
+
+[node name="MainMenu" type="Control" unique_id=341634203 node_paths=PackedStringArray("currentGold", "currentDiceAmount", "goalLabelText", "playerWinLossLabel", "playerWinLossText")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,11 +21,14 @@ script = ExtResource("1_853f1")
 initial_scene = &"uid://65kn7w5vtx2t"
 currentGold = NodePath("LeftInfo/CurrentGoldAmount")
 currentDiceAmount = NodePath("LeftInfo/CurrentDiceAmount")
+goalLabelText = NodePath("LeftInfo/GoalLabelText")
+playerWinLossLabel = NodePath("WinLossPopup/PlayerWinLossLabel")
+playerWinLossText = NodePath("WinLossPopup/PlayerWinLossText")
 
 [node name="TempBackgroundWithoutText" type="Sprite2D" parent="." unique_id=1177991906]
-position = Vector2(1402.6321, 536)
-scale = Vector2(3.9330654, 1.083)
-texture = ExtResource("1_tt5f1")
+position = Vector2(966.5, 542.5)
+scale = Vector2(1.0171875, 1.013889)
+texture = ExtResource("2_8saeu")
 flip_h = true
 
 [node name="MenuNameLabel" type="Label" parent="." unique_id=270416612]
@@ -95,7 +101,7 @@ anchor_right = 0.33125
 anchor_bottom = 1.0009259
 metadata/_edit_use_anchors_ = true
 
-[node name="GoalLabel" type="Label" parent="LeftInfo" unique_id=312054755]
+[node name="GoalLabelText" type="Label" parent="LeftInfo" unique_id=312054755]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.24378698
@@ -109,7 +115,7 @@ loosing all the dices will result in a game over"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="GoalLabel2" type="Label" parent="LeftInfo" unique_id=474458458]
+[node name="GoalLabel" type="Label" parent="LeftInfo" unique_id=474458458]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.14201184
@@ -201,6 +207,53 @@ offset_top = 815.0
 offset_right = 463.0
 offset_bottom = 886.0
 text = "Reset Save File"
+
+[node name="WinLossPopup" type="Control" parent="." unique_id=758335743]
+visible = false
+layout_mode = 1
+anchor_left = 0.28854167
+anchor_top = 0.31666666
+anchor_right = 0.70416665
+anchor_bottom = 0.825
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerWinLossPanel" type="PanelContainer" parent="WinLossPopup" unique_id=905904157]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ajtct")
+
+[node name="PlayerWinLossText" type="RichTextLabel" parent="WinLossPopup" unique_id=472214948]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021303277
+anchor_top = 0.35154822
+anchor_right = 0.98245615
+anchor_bottom = 0.95446265
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 50
+text = "The player gained enought gold an won??"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerWinLossLabel" type="Label" parent="WinLossPopup" unique_id=171760270]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.050125312
+anchor_top = 0.06739526
+anchor_right = 0.9436091
+anchor_bottom = 0.40619308
+theme_override_font_sizes/font_size = 50
+text = "Player Won?"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="MenuButtonsMiddle/VBoxContainer/Start game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="MenuButtonsMiddle/VBoxContainer/Exit Game" to="." method="_on_exit_game_pressed"]

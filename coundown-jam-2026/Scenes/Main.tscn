@@ -11,4 +11,5 @@ script = ExtResource("1_idj7w")
 fightingSceneNode = NodePath("../FightingScene")
 
 [node name="FightingScene" parent="." unique_id=293250360 node_paths=PackedStringArray("playerHolder") instance=ExtResource("2_idj7w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.03491211, -0.053833008, 0.030395508)
 playerHolder = NodePath("../PlayerHolder")

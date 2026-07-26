@@ -49,13 +49,13 @@ func _process(delta: float) -> void:
 	pass
 	
 func _IncreaseDiceAmount(value: int = 1) -> void:
-		SaveLoadManager.save_data.diceAmount = (diceAmount+1)
+		SaveLoadManager.save_data.diceAmount = (diceAmount+value)
 		SaveLoadManager._saveGame()
 		diceAmount = SaveLoadManager.save_data.diceAmount
 		dicesLeftLabel.text = str(diceAmount);
 
 func _DecreaseDiceAmount(value: int = 1) -> void:
-		SaveLoadManager.save_data.diceAmount = (diceAmount-1)
+		SaveLoadManager.save_data.diceAmount = (diceAmount-value)
 		SaveLoadManager._saveGame()
 		diceAmount = SaveLoadManager.save_data.diceAmount
 		dicesLeftLabel.text = str(diceAmount);
